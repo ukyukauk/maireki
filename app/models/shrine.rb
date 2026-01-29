@@ -12,4 +12,8 @@
 #  updated_at :datetime         not null
 #
 class Shrine < ApplicationRecord
+  has_many :visits, dependent: :destroy
+
+  validates :name, presence: true
+  validates :prefecture, presence: true
 end
