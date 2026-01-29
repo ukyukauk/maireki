@@ -22,4 +22,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :visits, dependent: :destroy
+
+  validates :account, presence: true, uniqueness: { case_sensitive: false }  # 大小を区別しない
 end
