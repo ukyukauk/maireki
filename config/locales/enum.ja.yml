@@ -1,0 +1,8 @@
+ja:
+  enum:
+    category:
+      goshuin: "御朱印"
+      omamori: "御守り"
+      omikuji: "おみくじ"
+      ema: "絵馬"
+      other: "その他"
