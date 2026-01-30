@@ -1,6 +1,6 @@
 class ShrinesController < ApplicationController
   before_action :set_shrine, only: [:show]
-  # before_action :authenticate_user!, only: [:show]
+  # before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update, :destroy]
 
   def index
     @shrines = Shrine.all
