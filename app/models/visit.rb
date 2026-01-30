@@ -17,4 +17,13 @@
 #  index_visits_on_user_id    (user_id)
 #
 class Visit < ApplicationRecord
+  belongs_to :user
+  belongs_to :shrine
+  has_many :items, dependent: :destroy
+
+  validates :visited_on, presence: true
+
+  accepts_nested_attributes_for :items, # items_attributesをparamsに含める
+    allow_destroy: true, # 編集画面でitemを削除可能にする
+    reject_if: proc { |a| a['name'].blank? } # 空入力のitemを保存しない
 end
