@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'header';
 @import 'flash';
+@import 'visit';
 
 html {
   word-spacing: 1px;
@@ -29,7 +30,7 @@ body {
 
 a {
   text-decoration: none;
-  color: $base-bg-color;
+  color: $text-base-color;
   cursor: pointer;
 }
 

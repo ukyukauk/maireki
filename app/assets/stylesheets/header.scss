@@ -9,8 +9,11 @@
 }
 
 .header_title {
-  color: $base-bg-color;
   font-size: 24px;
+
+  a {
+    color: $base-bg-color;
+  }
 }
 
 .header_menu {
@@ -35,16 +38,16 @@
   min-width: 130px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-}
 
-.dropdown_content a {
-  padding: 8px 16px;
-  display: block;
-  color: $text-base-color;
-}
+  a {
+    padding: 8px 16px;
+    display: block;
+    color: $text-base-color;
+  }
 
-.dropdown_content a:hover {
-  background-color: $card-color;
+  a:hover {
+    background-color: $card-color;
+  }
 }
 
 .dropdown:hover .dropdown_content {
