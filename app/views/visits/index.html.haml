@@ -1,1 +1,11 @@
-%h1 visits#index
+.container
+  .visits
+    - @visits.each do |visit|
+      .visit
+        .visit_shrine-name
+          = visit.shrine.name
+        .visit_date
+          参拝日：
+          = I18n.l(visit.visited_on, format: :long)
+        .visit_shrine-prefecture
+          = visit.shrine.prefecture

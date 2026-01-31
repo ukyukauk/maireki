@@ -129,6 +129,8 @@ GEM
       html2haml
     erubi (1.13.1)
     erubis (2.7.0)
+    faker (3.6.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.3-aarch64-linux-gnu)
     ffi (1.17.3-aarch64-linux-musl)
     ffi (1.17.3-arm-linux-gnu)
@@ -405,6 +407,7 @@ DEPENDENCIES
   debug
   devise
   erb2haml
+  faker
   hamlit
   jbuilder
   jsbundling-rails
