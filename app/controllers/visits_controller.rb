@@ -35,7 +35,7 @@ class VisitsController < ApplicationController
 
   def visit_params
     params.require(:visit).permit(
-      :visited_on, :prayer, :impression,
+      :visited_on, :prayer, :impression, :image,
       items_attributes: [:id, :category, :name, :price, :_destroy]
     )
   end

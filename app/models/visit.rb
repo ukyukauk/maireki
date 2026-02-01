@@ -20,6 +20,7 @@ class Visit < ApplicationRecord
   belongs_to :user
   belongs_to :shrine
   has_many :items, dependent: :destroy
+  has_one_attached :image
 
   validates :visited_on, presence: true
 

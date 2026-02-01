@@ -23,8 +23,9 @@ class Item < ApplicationRecord
   enum :category, {
     goshuin: 0,
     omamori: 1,
-    omikuji: 2,
-    ema: 3,
+    ofuda: 2,
+    omikuji: 3,
+    ema: 4,
     other: 99
   }
 end
