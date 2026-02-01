@@ -1,0 +1,45 @@
+@import "variables";
+
+.field {
+  & + & {
+    margin-top: 14px;
+  }
+}
+
+.text {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #ebebeb;
+}
+
+.select {
+  width: 120px;
+  margin-top: 6px;
+  padding: 8px;
+  border: 1px solid #ebebeb;
+}
+
+textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  min-height: 100px;
+  resize: vertical;
+  border: 1px solid #ebebeb;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  input[type="text"] {
+    flex: 1;
+  }
+
+  input[type="number"] {
+    width: 6rem;
+    text-align: right;
+  }
+}

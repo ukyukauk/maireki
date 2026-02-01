@@ -1,0 +1,46 @@
+.container
+  %ul
+    - @visit.errors.full_messages.each do |message|
+      %li= message
+  = form_with(model: @visit, local: true) do |f|
+    .field
+      %div
+        = f.label :visited_on, '【参拝日】'
+      %div
+        = f.date_field :visited_on, class: 'text'
+
+    .field
+      .label 【神社】
+      = f.collection_select :shrine_id, Shrine.all, :id, :name, { include_blank: '既存の神社を選択' }
+      = link_to "神社を新規登録する", new_shrine_path(return_to: request.fullpath)
+
+
+    .field
+      %div
+        = f.label :image, '【画像】'
+      %div
+        = f.file_field :image
+
+    .field
+      .label 【いただいたもの】
+      = f.fields_for :item do |item_f|
+        = item_f.select :category, Item.categories.keys.map { |k| [I18n.t("enum.category.#{k}"), k]}, { include_blank: '選択' }, { class: 'select'}
+        .item-row
+          = item_f.text_field :name, placeholder: '見開き御朱印', class: 'text'
+          = "#{item_f.number_field :price, placeholder: '1000', class: 'text'}円"
+      %p ここに行追加ボタンを置く
+
+    .field
+      %div
+        = f.label :prayer, '【お伝えしたこと】'
+      %div
+        = f.text_area :prayer, class: 'text'
+
+    .field
+      %div
+        = f.label :impression, '【感想】'
+      %div
+        = f.text_area :impression, class: 'text'
+
+    .field
+      = f.submit '保存', class: 'button-primary'

@@ -1,0 +1,55 @@
+@import "variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: $main-color;
+  padding: 16px;
+  font-weight: bold;
+}
+
+.header_title {
+  font-size: 24px;
+
+  a {
+    color: $base-bg-color;
+  }
+}
+
+.header_menu {
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.dropdown_content {
+  font-weight: normal;
+  display: none;
+  right: 0;
+  position: absolute;
+  background-color: $base-bg-color;
+  min-width: 130px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  a {
+    padding: 8px 16px;
+    display: block;
+    color: $text-base-color;
+  }
+
+  a:hover {
+    background-color: $card-color;
+  }
+}
+
+.dropdown:hover .dropdown_content {
+  display: block;
+}

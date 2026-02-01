@@ -14,7 +14,29 @@
     %link{:href => "/icon.png", :rel => "apple-touch-icon"}/
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
+
+    / Google Fonts
+    %link{:href => "https://fonts.googleapis.com", :rel => "preconnect"}/
+    %link{:crossorigin => "", :href => "https://fonts.gstatic.com", :rel => "preconnect"}/
+    %link{:href => "https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap", :rel => "stylesheet"}/
+
+    / font awesome
+    %link{:href => "https://use.fontawesome.com/releases/v7.0.0/css/all.css", :rel => "stylesheet"}/
+
   %body
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    %header.header
+      .header_title
+        = link_to 'Maireki', root_path
+      .header_menu
+        .dropdown
+          = image_tag 'torii1_myoujin.png', class: "menu-icon"
+          .dropdown_content
+            = link_to 'ホーム', root_path
+            = link_to '神社一覧', shrines_path
+            -# = link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: 'delete' }
+
+  - if flash.present?
+    .flash
+      - flash.each do |key, value|
+        %div{:class => key}= value
+  = yield
