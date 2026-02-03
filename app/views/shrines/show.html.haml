@@ -1,4 +1,19 @@
-%h1 shrines#show
-%p= @shrine.name
-%p= @shrine.prefecture
-%p= @shrine.address
+.container
+  .card
+    %h2.shrine_name= @shrine.name
+    .shrine_info
+      .shrine_info_item
+        .label
+          住所
+        .content
+          = @shrine.address
+      .shrine_info_item
+        .label
+          御祭神
+        .content
+          = @shrine.deities
+      .shrine_info_item
+        .label
+          ご利益
+        .content
+          = @shrine.blessings

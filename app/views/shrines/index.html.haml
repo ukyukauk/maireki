@@ -3,7 +3,7 @@
 
   .shrines
     - @shrines.each_with_index do |shrine, index|
-      = link_to shrine_path(shrine), class: 'shrine' do
+      = link_to shrine_path(shrine), class: 'card' do
         = "#{index + 1}. #{shrine.name} / #{shrine.prefecture}"
 
   = link_to new_shrine_path do

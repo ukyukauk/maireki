@@ -11,6 +11,7 @@ class ShrinesController < ApplicationController
   end
 
   def new
+    @shrine = Shrine.new
   end
 
   def create
