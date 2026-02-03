@@ -1,14 +1,13 @@
 .container
   .visits
     - @visits.each_with_index do |visit, index|
-      .visit
-        = link_to visit_path(visit) do
-          .visit_shrine-name
-            = "#{index + 1 }. #{visit.shrine.name}"
-          .visit_date
-            = "参拝日：#{I18n.l(visit.visited_on, format: :long)}"
-          .visit_shrine-prefecture
-            = "所在地：#{visit.shrine.prefecture}"
+      = link_to visit_path(visit), class: 'visit' do
+        .visit_shrine-name
+          = "#{index + 1 }. #{visit.shrine.name}"
+        .visit_date
+          = "参拝日：#{I18n.l(visit.visited_on, format: :long)}"
+        .visit_shrine-prefecture
+          = "所在地：#{visit.shrine.prefecture}"
 
   = link_to new_visit_path do
     .add-button
