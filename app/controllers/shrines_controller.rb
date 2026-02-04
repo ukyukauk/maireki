@@ -15,6 +15,13 @@ class ShrinesController < ApplicationController
   end
 
   def create
+    @shrine = Shrine.new(shrine_params)
+    if @shrine.save
+      redirect_to shrine_path(@shrine)
+    else
+      flash.now[:error] = '保存に失敗しました'
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -27,6 +34,10 @@ class ShrinesController < ApplicationController
   end
 
   private
+  def shrine_params
+    params.require(:shrine).permit(:name, :prefecture, :address, :deities, :blessings)
+  end
+
   def set_shrine
     @shrine = Shrine.find(params[:id])
   end

@@ -1,5 +1,9 @@
 @import "variables";
 
+.error-messages {
+  margin-bottom: 16px;
+}
+
 .field {
   & + & {
     margin-top: 14px;

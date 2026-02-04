@@ -1,5 +1,5 @@
 .container
-  %ul
+  %ul.error-messages
     - @visit.errors.full_messages.each do |message|
       %li= message
   = form_with(model: @visit, local: true) do |f|

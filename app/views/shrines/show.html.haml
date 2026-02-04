@@ -3,17 +3,24 @@
     %h2.shrine_name= @shrine.name
     .shrine_info
       .shrine_info_item
-        .label
+        .shrine_info_item_label
           住所
-        .content
+        .shrine_info_item_content
           = @shrine.address
       .shrine_info_item
-        .label
+        .shrine_info_item_label
           御祭神
-        .content
+        .shrine_info_item_content
           = @shrine.deities
       .shrine_info_item
-        .label
+        .shrine_info_item_label
           ご利益
-        .content
+        .shrine_info_item_content
           = @shrine.blessings
+
+  = link_to shrines_path do
+    .back
+      .back_icon
+        %i.fa-solid.fa-rotate-left
+      .back_text
+        %p 一覧へ戻る

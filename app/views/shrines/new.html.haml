@@ -1,5 +1,5 @@
 .container
-  %ul
+  %ul.error-messages
     - @shrine.errors.full_messages.each do |message|
       %li= message
   = form_with(model: @shrine, local: true) do |f|
