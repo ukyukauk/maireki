@@ -1,6 +1,12 @@
 .container
   .card
-    %h2.shrine_name= @shrine.name
+    .card_header
+      .title-row
+        %h2.shrine_name= @shrine.name
+        .card_actions
+          = link_to '編集', edit_shrine_path(@shrine)
+          -# = link_to '削除',
+      .divider
     .shrine_info
       .shrine_info_item
         .shrine_info_item_label
@@ -23,4 +29,4 @@
       .back_icon
         %i.fa-solid.fa-rotate-left
       .back_text
-        %p 一覧へ戻る
+        %p 神社一覧へ戻る

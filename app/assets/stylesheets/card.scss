@@ -11,3 +11,13 @@
     margin-top: 16px;
   }
 }
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.divider {
+  border-bottom: 3px dashed $main-color;
+}

@@ -1,13 +1,12 @@
 class ShrinesController < ApplicationController
-  before_action :set_shrine, only: [:show]
-  # before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :set_shrine, only: [:show, :edit, :update]
+  before_action :authenticate_user!
 
   def index
     @shrines = Shrine.all
   end
 
   def show
-
   end
 
   def new
@@ -28,6 +27,12 @@ class ShrinesController < ApplicationController
   end
 
   def update
+    if @shrine.update(shrine_params)
+      redirect_to shrine_path(@shrine)
+    else
+      flash.now[:error] = '更新に失敗しました'
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
