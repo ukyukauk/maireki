@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_01_105911) do
   end
 
   create_table "shrines", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "name", null: false
     t.string "prefecture", null: false
     t.string "address"
@@ -60,6 +61,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_01_105911) do
     t.text "blessings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shrines_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

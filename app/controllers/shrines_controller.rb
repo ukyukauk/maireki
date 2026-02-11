@@ -3,18 +3,18 @@ class ShrinesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @shrines = Shrine.all
+    @shrines = current_user.shrines.order(:created_at)
   end
 
   def show
   end
 
   def new
-    @shrine = Shrine.new
+    @shrine = current_user.shrines.build
   end
 
   def create
-    @shrine = Shrine.new(shrine_params)
+    @shrine = current_user.shrines.build(shrine_params)
     if @shrine.save
       redirect_to shrine_path(@shrine)
     else
@@ -44,6 +44,6 @@ class ShrinesController < ApplicationController
   end
 
   def set_shrine
-    @shrine = Shrine.find(params[:id])
+    @shrine = current_user.shrines.find(params[:id])
   end
 end
