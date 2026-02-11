@@ -14,7 +14,7 @@
 #
 #  index_items_on_visit_id  (visit_id)
 #
-require "test_helper"
+require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
   # test "the truth" do

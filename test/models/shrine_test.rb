@@ -16,7 +16,7 @@
 #
 #  index_shrines_on_user_id  (user_id)
 #
-require "test_helper"
+require 'test_helper'
 
 class ShrineTest < ActiveSupport::TestCase
   # test "the truth" do
