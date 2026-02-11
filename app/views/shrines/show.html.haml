@@ -5,7 +5,7 @@
         %h2.shrine_name= @shrine.name
         .card_actions
           = link_to '編集', edit_shrine_path(@shrine)
-          -# = link_to '削除',
+          = link_to '削除', shrine_path(@shrine), data: { turbo_method: 'delete', turbo_confirm: '削除します。よろしいですか？'}
       .divider
     .shrine_info
       .shrine_info_item

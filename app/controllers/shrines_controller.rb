@@ -16,7 +16,7 @@ class ShrinesController < ApplicationController
   def create
     @shrine = current_user.shrines.build(shrine_params)
     if @shrine.save
-      redirect_to shrine_path(@shrine)
+      redirect_to shrine_path(@shrine), notice: '登録しました'
     else
       flash.now[:error] = '保存に失敗しました'
       render :new, status: :unprocessable_entity
@@ -28,7 +28,7 @@ class ShrinesController < ApplicationController
 
   def update
     if @shrine.update(shrine_params)
-      redirect_to shrine_path(@shrine)
+      redirect_to shrine_path(@shrine), notice: '更新しました'
     else
       flash.now[:error] = '更新に失敗しました'
       render :edit, status: :unprocessable_entity
@@ -36,6 +36,9 @@ class ShrinesController < ApplicationController
   end
 
   def destroy
+    shrine = current_user.shrines.find(params[:id])
+    shrine.destroy!
+    redirect_to shrines_path, status: :see_other, notice: '削除しました'
   end
 
   private
