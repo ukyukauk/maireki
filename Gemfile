@@ -38,9 +38,10 @@ gem 'annotate'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'devise'
-gem 'hamlit'
-gem 'sassc-rails'
 gem 'faker'
+gem 'hamlit'
+gem 'importmap-rails'
+gem 'sassc-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

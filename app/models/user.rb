@@ -24,6 +24,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :visits, dependent: :destroy
+  has_many :shrines, dependent: :destroy
 
   validates :account, presence: true, uniqueness: { case_sensitive: false }  # 大小を区別しない
 end

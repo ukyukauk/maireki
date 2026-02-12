@@ -1,5 +1,5 @@
 class VisitsController < ApplicationController
-  before_action :set_shrine, only: [:show]
+  before_action :set_visit, only: [:show]
   before_action :authenticate_user!
 
   def index

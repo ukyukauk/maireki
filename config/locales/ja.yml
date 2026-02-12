@@ -7,9 +7,20 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
     attributes:
-      article:
-        title: 'タイトル'
-        content: '内容'
+      shrine:
+        name: '神社名'
+        prefecture: '都道府県'
+        address: '住所'
+        deities: '御祭神'
+        blessings: '御利益'
+      visit:
+        visited_on: '参拝日'
+        prayer: 'お伝えしたこと'
+        impression: '感想'
+      item:
+        name: '項目'
+        category: 'カテゴリー'
+        price: '初穂料'
   date:
     abbr_day_names:
     - 日

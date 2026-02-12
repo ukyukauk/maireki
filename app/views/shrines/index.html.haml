@@ -1,6 +1,18 @@
-%h1 shrines#index
+.container
+  %h2 登録神社一覧
 
-- @shrines.each do |shrine|
-  %p= shrine.name
-  %p= shrine.prefecture
-  %p= shrine.address
+  .shrines
+    - @shrines.each_with_index do |shrine, index|
+      = link_to shrine_path(shrine), class: 'card' do
+        = "#{index + 1}. #{shrine.name} / #{shrine.prefecture}"
+
+  = link_to root_path do
+    .back
+      .back_icon
+        %i.fa-solid.fa-rotate-left
+      .back_text
+        %p TOPへ戻る
+
+  = link_to new_shrine_path do
+    .add-button
+      %i.fa.fa-plus

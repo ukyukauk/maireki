@@ -1,4 +1,32 @@
-%h1 shrines#show
-%p= @shrine.name
-%p= @shrine.prefecture
-%p= @shrine.address
+.container
+  .card
+    .card_header
+      .title-row
+        %h2.shrine_name= @shrine.name
+        .card_actions
+          = link_to '編集', edit_shrine_path(@shrine)
+          = link_to '削除', shrine_path(@shrine), data: { turbo_method: 'delete', turbo_confirm: '削除します。よろしいですか？'}
+      .divider
+    .shrine_info
+      .shrine_info_item
+        .shrine_info_item_label
+          住所
+        .shrine_info_item_content
+          = @shrine.address
+      .shrine_info_item
+        .shrine_info_item_label
+          御祭神
+        .shrine_info_item_content
+          = @shrine.deities
+      .shrine_info_item
+        .shrine_info_item_label
+          ご利益
+        .shrine_info_item_content
+          = @shrine.blessings
+
+  = link_to shrines_path do
+    .back
+      .back_icon
+        %i.fa-solid.fa-rotate-left
+      .back_text
+        %p 神社一覧へ戻る

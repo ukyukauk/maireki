@@ -10,8 +10,13 @@
 #  prefecture :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :bigint           not null
 #
-require "test_helper"
+# Indexes
+#
+#  index_shrines_on_user_id  (user_id)
+#
+require 'test_helper'
 
 class ShrineTest < ActiveSupport::TestCase
   # test "the truth" do

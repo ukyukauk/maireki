@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   # Defines the root path route ("/")
-  root to: "visits#index"
+  root to: 'visits#index'
 
   resources :visits
   resources :shrines
