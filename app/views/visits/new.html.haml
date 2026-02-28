@@ -11,23 +11,23 @@
 
     .field
       .label 【神社】
-      = f.collection_select :shrine_id, Shrine.all, :id, :name, { include_blank: '既存の神社を選択' }
-      = link_to "神社を新規登録する", new_shrine_path(return_to: request.fullpath)
-
+      .select_shrine
+        = f.collection_select :shrine_id, current_user.shrines.all, :id, :name_with_prefecture, { include_blank: '既存の神社を選択' }, { class: 'select'}
+        = link_to "神社を新規登録", new_shrine_path(return_to: request.fullpath), class: 'button-secondary'
 
     .field
       %div
-        = f.label :image, '【画像】'
+        = f.label :image, '【御朱印】'
       %div
         = f.file_field :image
 
     .field
-      .label 【いただいたもの】
-      = f.fields_for :item do |item_f|
+      .label 【授与品】
+      = f.fields_for :items do |item_f|
         = item_f.select :category, Item.categories.keys.map { |k| [I18n.t("enum.category.#{k}"), k]}, { include_blank: '選択' }, { class: 'select'}
         .item-row
-          = item_f.text_field :name, placeholder: '見開き御朱印', class: 'text'
-          = "#{item_f.number_field :price, placeholder: '1000', class: 'text'}円"
+          = item_f.text_field :name, placeholder: '限定御朱印', class: 'text'
+          = "#{item_f.number_field :price, placeholder: '500', class: 'text'}円"
       %p ここに行追加ボタンを置く
 
     .field

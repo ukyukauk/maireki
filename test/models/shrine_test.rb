@@ -14,7 +14,8 @@
 #
 # Indexes
 #
-#  index_shrines_on_user_id  (user_id)
+#  index_shrines_on_user_id                          (user_id)
+#  index_shrines_on_user_id_and_prefecture_and_name  (user_id,prefecture,name) UNIQUE
 #
 require 'test_helper'
 
