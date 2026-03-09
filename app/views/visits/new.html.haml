@@ -23,12 +23,27 @@
 
     .field
       .label 【授与品】
-      = f.fields_for :items do |item_f|
-        = item_f.select :category, Item.categories.keys.map { |k| [I18n.t("enum.category.#{k}"), k]}, { include_blank: '選択' }, { class: 'select'}
-        .item-row
-          = item_f.text_field :name, placeholder: '限定御朱印', class: 'text'
-          = "#{item_f.number_field :price, placeholder: '500', class: 'text'}円"
-      %p ここに行追加ボタンを置く
+      .item-container
+        .item-inputs
+          = f.fields_for :items do |item_f|
+            = item_f.select :category, Item.categories.keys.map { |k| [I18n.t("enum.category.#{k}"), k]}, { include_blank: '選択' }, { class: 'select'}
+            .item-row
+              = item_f.text_field :name, placeholder: '限定御朱印', class: 'text'
+              = "#{item_f.number_field :price, placeholder: '500', class: 'text'}円"
+      .item-buttons
+        #add-row-button.item-button ＋追加
+        #remove-row-button.item-button －削除
+
+      %template#item-template
+        .item-inputs
+          %select.select{ name: "visit[items_attributes][NEW_RECORD][category]" }
+            %option{ value: ""} 選択
+            - Item.categories.keys.each do |k|
+              %option{ value: k}= I18n.t("enum.category.#{k}")
+          .item-row
+            %input.text{ type: "text", name: "visit[items_attributes][NEW_RECORD][name]", placeholder: "限定御朱印" }
+            %input.text{ type: "number", name: "visit[items_attributes][NEW_RECORD][price]", placeholder: "500" }
+            円
 
     .field
       %div

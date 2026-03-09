@@ -83,3 +83,24 @@ input[type="file"] {
   color: $text-base-color;
   font-family: $font-family;
 }
+
+.item-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.item-button {
+  margin-top: 6px;
+  width: fit-content;
+  padding: 6px;
+  border: 1px solid #ebebeb;
+  font-family: $font-family;
+  font-size: 14px;
+  background-color: $card-color;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.select.is-invalid {
+  border: 2px solid $accent-color;
+}

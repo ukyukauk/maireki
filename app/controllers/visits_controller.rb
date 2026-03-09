@@ -31,9 +31,18 @@ class VisitsController < ApplicationController
   end
 
   def update
+    if @visit.update(visit_params)
+      redirect_to visit_path(@visit), notice: '参拝記録を更新しました'
+    else
+      flash.now[:error] = '参拝記録の更新に失敗しました。'
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    visit = current_user.visits.find(params[:id])
+    visit.destroy!
+    redirect_to visits_path, status: :see_other, notice:'参拝記録を削除しました'
   end
 
   private

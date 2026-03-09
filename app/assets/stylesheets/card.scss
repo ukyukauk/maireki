@@ -21,3 +21,48 @@
 .divider {
   border-bottom: 3px dashed $main-color;
 }
+
+.card_name {
+  font-weight: bold;
+}
+
+.card_info {
+  margin-top: 14px;
+}
+
+.card_info_item {
+  & + & {
+    margin-top: 10px;
+  }
+}
+
+.card_info_item_label {
+  font-weight: bold;
+}
+
+.card_info_item_content {
+  overflow-wrap: anywhere;
+}
+
+
+.card_item-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  column-gap: 10px;
+  align-items: baseline;
+}
+
+.item-category {
+  white-space: nowrap;
+}
+
+.item-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-price {
+  text-align: right;
+  white-space: nowrap;
+}

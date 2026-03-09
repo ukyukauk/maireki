@@ -1,1 +1,48 @@
-%h1 visits#show
+.container
+  .card
+    .card_header
+      .title-row
+        %h2.card_name= @visit.shrine.name
+        .card_actions
+          = link_to '編集', edit_visit_path(@visit)
+          = link_to '削除', visit_path(@visit), data: { turbo_method: 'delete', turbo_confirm: '削除します。よろしいですか？'}
+      .divider
+
+    .card_info
+      .card_info_item
+        .card_info_item_label
+          参拝日
+        .card_info_item_content
+          = I18n.l(@visit.visited_on, format: :default)
+      .card_info_item
+        .card_info_item_label
+          御祭神
+        .card_info_item_content
+          = @visit.shrine.deities
+      .card_info_item
+        .card_info_item_label
+          御利益
+        .card_info_item_content
+          = @visit.shrine.blessings
+      .card_info_item
+        .card_info_item_label
+          授与品
+        .card_info_item_content
+          - @visit.items.each do |item|
+            .card_item-row
+              .item-category
+                [#{I18n.t("enum.category.#{item.category}")}]
+              .item-name
+                =item.name
+              .item-price
+                #{item.price}円
+      .card_info_item
+        .card_info_item_label
+          お伝えしたこと
+        .card_info_item_content
+          = @visit.prayer
+      .card_info_item
+        .card_info_item_label
+          感想
+        .card_info_item_content
+          = @visit.impression
