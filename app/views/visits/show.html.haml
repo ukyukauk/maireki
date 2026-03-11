@@ -46,3 +46,10 @@
           感想
         .card_info_item_content
           = @visit.impression
+
+  = link_to visits_path do
+    .back
+      .back_icon
+        %i.fa-solid.fa-rotate-left
+      .back_text
+        %p TOPへ戻る
