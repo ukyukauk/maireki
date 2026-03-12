@@ -27,4 +27,5 @@ class Visit < ApplicationRecord
   accepts_nested_attributes_for :items, # items_attributesをparamsに含める
     allow_destroy: true, # 編集画面でitemを削除可能にする
     reject_if: proc { |a| a['name'].blank? } # 空入力のitemを保存しない
+
 end

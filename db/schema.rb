@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_01_105911) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_28_011132) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_01_105911) do
     t.text "blessings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "prefecture", "name"], name: "index_shrines_on_user_id_and_prefecture_and_name", unique: true
     t.index ["user_id"], name: "index_shrines_on_user_id"
   end
 

@@ -17,3 +17,24 @@
     margin-top: 22px;
   }
 }
+
+.button-primary {
+  font-family: $font-family;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  color: $base-bg-color;
+  padding: 10px 0;
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.button-secondary {
+  padding: 8px;
+  border: 1px solid #ebebeb;
+  font-family: $font-family;
+  font-size: 14px;
+  background-color: white;
+}

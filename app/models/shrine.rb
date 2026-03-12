@@ -14,7 +14,8 @@
 #
 # Indexes
 #
-#  index_shrines_on_user_id  (user_id)
+#  index_shrines_on_user_id                          (user_id)
+#  index_shrines_on_user_id_and_prefecture_and_name  (user_id,prefecture,name) UNIQUE
 #
 class Shrine < ApplicationRecord
   belongs_to :user
@@ -22,6 +23,8 @@ class Shrine < ApplicationRecord
 
   validates :name, presence: true
   validates :prefecture, presence: true
+
+  validates :name, uniqueness: { scope: [:prefecture, :user_id] }
 
   PREFECTURES = %w[
     北海道 青森県 岩手県 宮城県 秋田県 山形県 福島県
@@ -34,4 +37,8 @@ class Shrine < ApplicationRecord
     福岡県 佐賀県 長崎県 熊本県 大分県 宮崎県 鹿児島県
     沖縄県
   ]
+
+  def name_with_prefecture
+    "#{name}／#{prefecture}"
+  end
 end

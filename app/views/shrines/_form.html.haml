@@ -2,7 +2,7 @@
   %ul.error-messages
     - shrine.errors.full_messages.each do |message|
       %li= message
-  = form_with(model: shrine, local: true) do |f|
+  = form_with(model: shrine, url: shrines_path(return_to: params[:return_to]), local: true) do |f|
     .field
       %div
         = f.label :name, '【神社名】'
@@ -39,9 +39,9 @@
     .field
       = f.submit '保存', class: 'button-primary'
 
-  = link_to shrines_path do
+  = link_to (params[:return_to].presence || shrines_path) do
     .back
       .back_icon
         %i.fa-solid.fa-rotate-left
       .back_text
-        %p 神社一覧へ戻る
+        %p 戻る
