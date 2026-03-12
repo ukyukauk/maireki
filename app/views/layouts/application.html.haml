@@ -34,7 +34,7 @@
           .dropdown_content
             = link_to 'ホーム', root_path
             = link_to 'MY神社', shrines_path
-            -# = link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: 'delete' }
+            = link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: 'delete' }
 
   - if flash.present?
     .flash
