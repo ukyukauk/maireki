@@ -42,6 +42,7 @@ gem 'faker'
 gem 'hamlit'
 gem 'importmap-rails'
 gem 'sassc-rails'
+gem 'sidekiq'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -60,6 +61,8 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'erb2haml'
   gem 'web-console'
+  gem 'letter_opener'
+  gem 'letter_opener_web', '~> 3.0'
 end
 
 group :test do

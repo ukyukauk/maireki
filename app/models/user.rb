@@ -27,4 +27,8 @@ class User < ApplicationRecord
   has_many :shrines, dependent: :destroy
 
   validates :account, presence: true, uniqueness: { case_sensitive: false }  # 大小を区別しない
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 end
