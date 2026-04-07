@@ -9,6 +9,9 @@
       .divider
 
     .card_info
+      .goshuin
+        - if @visit.image.attached?
+          = image_tag @visit.image
       .card_info_item
         .card_info_item_label
           参拝日
