@@ -17,7 +17,7 @@ class ShrinesController < ApplicationController
     @shrine = current_user.shrines.build(shrine_params)
     if @shrine.save
       if safe_return_to = safe_internal_path(params[:return_to])
-        redirect_to "#{safe_return_to}?shrine_id=#{@shrine.id}", notice: "神社を登録しました"
+        redirect_to "#{safe_return_to}?shrine_id=#{@shrine.id}", notice: '神社を登録しました'
       else
         redirect_to shrine_path(@shrine), notice: '神社を登録しました'
       end
@@ -56,7 +56,7 @@ class ShrinesController < ApplicationController
 
   def safe_internal_path(path)
     return nil if path.blank?
-    return nil unless path.start_with?("/") # 外部URL対策
+    return nil unless path.start_with?('/') # 外部URL対策
     path
   end
 end

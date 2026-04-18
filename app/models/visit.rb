@@ -24,8 +24,16 @@ class Visit < ApplicationRecord
 
   validates :visited_on, presence: true
 
+  validate :visited_on_cannot_be_in_the_future
+
   accepts_nested_attributes_for :items, # items_attributesをparamsに含める
     allow_destroy: true, # 編集画面でitemを削除可能にする
     reject_if: proc { |a| a['name'].blank? } # 空入力のitemを保存しない
+
+  private
+  def visited_on_cannot_be_in_the_future
+    return if visited_on.blank?
+    errors.add(:visited_on, "は未来の日付にできません") if visited_on > Date.today
+  end
 
 end
