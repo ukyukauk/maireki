@@ -1,28 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Visit, type: :model do
-  let!(:user) do
-    User.create!({
-      account: 'testuser',
-      email: 'test@sample.com',
-      password: 'password'
-    })
-  end
+  let!(:user) { create(:user) }
 
   context '参拝日と神社が入力されており、参拝日が今日以前の場合' do
-    let!(:shrine) do
-      user.shrines.create!({
-        name: 'テスト神社',
-        prefecture: '兵庫県'
-      })
-    end
-
-    let!(:visit) do
-      user.visits.build({
-        shrine_id: shrine.id,
-        visited_on: Date.today
-      })
-    end
+    let!(:shrine) { create(:shrine, user: user) }
+    let!(:visit) { build(:visit, user: user, shrine_id: shrine.id) }
 
     it '参拝記録が保存できる' do
       expect(visit).to be_valid
@@ -30,19 +13,8 @@ RSpec.describe Visit, type: :model do
   end
 
   context '参拝日が未入力の場合' do
-    let!(:shrine) do
-      user.shrines.create!({
-        name: 'テスト神社',
-        prefecture: '兵庫県'
-      })
-    end
-
-    let!(:visit) do
-      user.visits.build({
-        shrine_id: shrine.id,
-        visited_on: nil
-      })
-    end
+    let!(:shrine) { create(:shrine, user: user) }
+    let!(:visit) { build(:visit, user: user, shrine_id: shrine.id, visited_on: nil) }
 
     it '参拝記録が保存できない' do
       expect(visit).to be_invalid
@@ -51,12 +23,7 @@ RSpec.describe Visit, type: :model do
   end
 
   context '神社が未入力の場合' do
-    let!(:visit) do
-      user.visits.build({
-        shrine_id: nil,
-        visited_on: Date.today
-      })
-    end
+    let!(:visit) { build(:visit, user: user, shrine_id: nil) }
 
     it '参拝記録が保存できない' do
       expect(visit).to be_invalid
@@ -65,19 +32,8 @@ RSpec.describe Visit, type: :model do
   end
 
   context '参拝日が未来日の場合' do
-    let!(:shrine) do
-      user.shrines.create!({
-        name: 'テスト神社',
-        prefecture: '兵庫県'
-      })
-    end
-
-    let!(:visit) do
-      user.visits.build({
-        shrine_id: shrine.id,
-        visited_on: Date.tomorrow
-      })
-    end
+    let!(:shrine) { create(:shrine, user: user) }
+    let!(:visit) { build(:visit, user: user, shrine_id: shrine.id, visited_on: Date.tomorrow) }
 
     it '参拝記録が保存できない' do
       expect(visit).to be_invalid
