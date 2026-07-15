@@ -1,6 +1,6 @@
 class VisitsController < ApplicationController
-  before_action :set_visit, only: [:show, :edit, :update]
   before_action :authenticate_user!
+  before_action :set_visit, only: [:show, :edit, :update]
 
   def index
     @visits = current_user.visits.includes(:shrine).order(visited_on: :desc)

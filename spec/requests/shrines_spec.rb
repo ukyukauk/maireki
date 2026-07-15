@@ -12,13 +12,17 @@ RSpec.describe 'Shrines', type: :request do
 
       it '200ステータスが返ってくる' do
         get shrines_path
+
         expect(response).to have_http_status(:ok) #200
       end
+
+      it '他人の'
     end
 
     context 'ログインしていない場合' do
       it 'ログイン画面に遷移する' do
         get shrines_path
+
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -31,7 +35,9 @@ RSpec.describe 'Shrines', type: :request do
 
     it '200ステータスが返ってくる' do
       shrine = create(:shrine, user: user)
+
       get shrine_path(shrine)
+
       expect(response).to have_http_status(:ok)
     end
 
@@ -49,10 +55,11 @@ RSpec.describe 'Shrines', type: :request do
     context 'ログインしている場合' do
       before do
           sign_in user
-        end
+      end
 
       it '200ステータスが返ってくる' do
         get new_shrine_path
+
         expect(response).to have_http_status(:ok)
       end
     end
@@ -60,6 +67,7 @@ RSpec.describe 'Shrines', type: :request do
     context 'ログインしていない場合' do
       it 'ログイン画面に遷移する' do
         get new_shrine_path
+
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -117,7 +125,9 @@ RSpec.describe 'Shrines', type: :request do
     context 'ログインしていない場合' do
       it 'ログイン画面に遷移する' do
         shrine_params = attributes_for(:shrine)
+
         post shrines_path, params: { shrine: shrine_params }
+
         expect(response).to redirect_to(new_user_session_path)
       end
     end
