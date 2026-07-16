@@ -80,7 +80,7 @@ RSpec.describe 'Visits', type: :request do
 
       it '参拝記録が保存される' do
         shrine = create(:shrine, user: user)
-        visit_params = attributes_for(:visit, shrine_id: shrine.id, impression: '登録後')
+        visit_params = attributes_for(:visit, shrine_id: shrine.id, impression: '登録した参拝記録')
 
         expect {
           post visits_path, params: { visit: visit_params }
@@ -90,7 +90,7 @@ RSpec.describe 'Visits', type: :request do
 
         expect(response).to redirect_to(visit_path(visit))
         expect(visit.shrine).to eq shrine
-        expect(visit.impression).to eq '登録後'
+        expect(visit.impression).to eq '登録した参拝記録'
       end
 
       it '不正な値の場合、保存されない' do
@@ -165,11 +165,11 @@ RSpec.describe 'Visits', type: :request do
         visit = create(:visit, user: user, shrine: shrine)
 
         patch visit_path(visit), params: {
-          visit: { impression: '更新後' }
+          visit: { impression: '更新後の感想' }
         }
 
         expect(response).to redirect_to(visit_path(visit))
-        expect(visit.reload.impression).to eq '更新後'
+        expect(visit.reload.impression).to eq '更新後の感想'
       end
 
       it '不正な値の場合、参拝記録が更新されない' do
@@ -188,14 +188,14 @@ RSpec.describe 'Visits', type: :request do
       it '他人の参拝記録は更新できない' do
         other_user = create(:user)
         other_shrine = create(:shrine, user: other_user)
-        other_visit = create(:visit, user: other_user, shrine: other_shrine, impression: '更新前')
+        other_visit = create(:visit, user: other_user, shrine: other_shrine)
 
         patch visit_path(other_visit), params: {
           visit: { impression: '不正に更新' }
         }
 
         expect(response).to have_http_status(:not_found)
-        expect(other_visit.reload.impression).to eq '更新前'
+        expect(other_visit.reload.impression).not_to eq '不正に更新'
       end
     end
 
@@ -205,11 +205,11 @@ RSpec.describe 'Visits', type: :request do
         visit = create(:visit, user: user, shrine: shrine)
 
         patch visit_path(visit), params: {
-          visit: { impression: '更新後' }
+          visit: { impression: '更新後の感想' }
         }
 
         expect(response).to redirect_to(new_user_session_path)
-        expect(visit.reload.impression).not_to eq '更新後'
+        expect(visit.reload.impression).not_to eq '更新後の感想'
       end
     end
   end
