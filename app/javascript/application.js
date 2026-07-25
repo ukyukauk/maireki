@@ -5,7 +5,6 @@ import $ from 'jquery'
 
 document.addEventListener('turbo:load', () => {
   const addButton = $("#add-row-button");
-  const removeButton = $("#remove-row-button");
   const $container = $(".item-container");
   const $template = $("#item-template");
 
@@ -51,28 +50,25 @@ document.addEventListener('turbo:load', () => {
     updateSelectValidation();
   });
 
-  // 削除ボタン
-  removeButton.on("click", (e) => {
-    e.preventDefault();
+  $(document)
+    .off("click.removeItem", "#remove-row-button")
+    .on("click.removeItem", "#remove-row-button", function (e) {
+      e.preventDefault();
 
-    const $inputs = $container.find(".item-inputs");
+      const $row = $(this).closest(".item-inputs");
+      const $visibleRows = $container.find(".item-inputs:visible");
+      const itemId = $row.find("input[name$='[id]']").val();
+      const $destroyField = $row.find(".destroy-field");
 
-    if ($inputs.length <= 1) return;
-
-    $inputs.each(function () {
-      const input = $(this);
-
-      const select = input.find("select").val();
-      const name = input.find("input[type='text']").val();
-      const price = input.find("input[type='number']").val();
-
-      // 全部空なら削除
-      if (!select && !name && !price) {
-        input.remove();
-        return false; // 1行だけ削除して終了
+      if (itemId) {
+        // DB保存済み
+        $destroyField.val("1");
+        $row.hide();
+      } else {
+        // まだDBに保存されていない追加行
+        $row.remove();
       }
-    });
 
-    updateSelectValidation();
-  });
+      updateSelectValidation();
+    });
 });
