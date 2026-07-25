@@ -1,6 +1,6 @@
 class ShrinesController < ApplicationController
-  before_action :set_shrine, only: [:show, :edit, :update]
   before_action :authenticate_user!
+  before_action :set_shrine, only: [:show, :edit, :update]
 
   def index
     @shrines = current_user.shrines.order(:created_at)
