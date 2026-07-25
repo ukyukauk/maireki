@@ -43,7 +43,7 @@ RSpec.describe Shrine, type: :model do
     it '神社が保存できない' do
       expect(shrine).to be_invalid
       # p shrine.errors.messages
-      expect(shrine.errors[:name]).to include("を入力してください")
+      expect(shrine.errors[:name]).to include('を入力してください')
     end
   end
 
@@ -53,7 +53,7 @@ RSpec.describe Shrine, type: :model do
     it '神社が保存できない' do
       expect(shrine).to be_invalid
       # p shrine.errors.messages
-      expect(shrine.errors[:prefecture]).to include("を入力してください")
+      expect(shrine.errors[:prefecture]).to include('を入力してください')
     end
   end
 
@@ -67,7 +67,7 @@ RSpec.describe Shrine, type: :model do
     it '神社が保存できない' do
       expect(shrine2).to be_invalid
       # p shrine2.errors.messages
-      expect(shrine2.errors[:name]).to include("はすでに存在します")
+      expect(shrine2.errors[:name]).to include('はすでに存在します')
     end
   end
 end

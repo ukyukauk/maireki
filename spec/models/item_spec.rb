@@ -18,7 +18,7 @@ RSpec.describe Item, type: :model do
 
     it '授与品が保存できない' do
       expect(item).to be_invalid
-      expect(item.errors[:name]).to include("を入力してください")
+      expect(item.errors[:name]).to include('を入力してください')
     end
   end
 
@@ -27,7 +27,7 @@ RSpec.describe Item, type: :model do
 
     it '授与品が保存できない' do
       expect(item).to be_invalid
-      expect(item.errors[:category]).to include("を入力してください")
+      expect(item.errors[:category]).to include('を入力してください')
     end
   end
 end
