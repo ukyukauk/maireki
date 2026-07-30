@@ -25,7 +25,7 @@
       .label 【授与品】
       .item-container
         = f.fields_for :items do |item_f|
-          .item-inputs
+          .item-inputs{ id: item_f.object.persisted? ? "item_#{item_f.object.id}" : nil }
             = item_f.hidden_field :id
             = item_f.hidden_field :_destroy, value: '0', class: 'destroy-field'
 

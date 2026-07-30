@@ -18,7 +18,7 @@ RSpec.describe Visit, type: :model do
 
     it '参拝記録が保存できない' do
       expect(visit).to be_invalid
-      expect(visit.errors[:visited_on]).to include("を入力してください")
+      expect(visit.errors[:visited_on]).to include('を入力してください')
     end
   end
 
@@ -27,7 +27,7 @@ RSpec.describe Visit, type: :model do
 
     it '参拝記録が保存できない' do
       expect(visit).to be_invalid
-      expect(visit.errors[:shrine]).to include("を入力してください")
+      expect(visit.errors[:shrine]).to include('を入力してください')
     end
   end
 
@@ -38,7 +38,7 @@ RSpec.describe Visit, type: :model do
     it '参拝記録が保存できない' do
       expect(visit).to be_invalid
       # p visit.errors.messages
-      expect(visit.errors[:visited_on]).to include("は未来の日付にできません")
+      expect(visit.errors[:visited_on]).to include('は未来の日付にできません')
     end
   end
 end

@@ -33,7 +33,7 @@ class Visit < ApplicationRecord
   private
   def visited_on_cannot_be_in_the_future
     return if visited_on.blank?
-    errors.add(:visited_on, "は未来の日付にできません") if visited_on > Date.today
+    errors.add(:visited_on, 'は未来の日付にできません') if visited_on > Date.today
   end
 
 end
