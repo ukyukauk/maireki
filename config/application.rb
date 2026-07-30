@@ -25,5 +25,9 @@ module Maireki
     # config.eager_load_paths << Rails.root.join("extras")
     config.i18n.default_locale = :ja
     config.active_job.queue_adapter = :sidekiq
+
+    if ['development', 'test'].include? ENV['RAILS_ENV']
+      Dotenv::Railtie.load
+    end
   end
 end
