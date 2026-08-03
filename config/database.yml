@@ -15,6 +15,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  pool: 5
+  timeout: 5000
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -83,3 +85,4 @@ production:
   database: maireki_production
   username: maireki
   password: <%= ENV["MAIREKI_DATABASE_PASSWORD"] %>
+  host: <%= ENV['DATABASE_HOST'] %>

@@ -1,0 +1,17 @@
+{
+  "name": "maireki",
+  "description": "This is maireki",
+  "keywords": [],
+  "website": "",
+  "repository": "https://github.com/ukyukauk/maireki",
+  "env": {},
+  "addons": ["heroku-postgresql:essential-0"],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
